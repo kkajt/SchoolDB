@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.kkorzycki.schooldb.DeletingData.DeleteClassWindow">
+  <children>
+    <Pane layoutX="0.0" layoutY="0.0" prefHeight="200.0" prefWidth="300.0">
+      <children>
+        <Label alignment="CENTER" layoutX="20.0" layoutY="14.0" prefWidth="261.0" text="Podaj kod klasy&#10;do usunięcia" textAlignment="CENTER">
+          <font>
+            <Font name="System Bold" size="16.0" />
+          </font>
+        </Label>
+        <TextField id="studentsCode" fx:id="classCode" layoutX="150.0" layoutY="69.0" prefHeight="31.9609375" prefWidth="121.0" />
+        <Label layoutX="14.0" layoutY="76.0" prefWidth="136.0" text="Kod klasy">
+          <font>
+            <Font name="System Bold" size="14.0" fx:id="x1" />
+          </font>
+        </Label>
+        <Button font="$x1" layoutX="46.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#deleteClassFromDatabaseHandler" prefHeight="31.9609375" prefWidth="73.0" text="Usuń" />
+        <Button font="$x1" layoutX="177.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#backToStartingWindowHandler" prefHeight="31.9609375" prefWidth="73.0" text="Anuluj" />
+        <Label fx:id="label" layoutX="18.0" layoutY="101.0" prefHeight="31.9609375" prefWidth="253.0" text="" textFill="#ff3333">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

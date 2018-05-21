@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="502.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.kkorzycki.schooldb.InsertingData.InsertStudentWindow">
+  <children>
+    <Pane layoutX="0.0" layoutY="0.0" prefHeight="502.0" prefWidth="400.0">
+      <children>
+        <VBox layoutX="27.0" layoutY="14.0" prefHeight="394.0" prefWidth="346.0">
+          <children>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label prefHeight="31.9609375" prefWidth="190.0" text="PESEL">
+                  <font>
+                    <Font name="System Bold" size="16.0" fx:id="x1" />
+                  </font>
+                </Label>
+                <TextField fx:id="PESEL" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Imię" />
+                <TextField id="PESELTextField" fx:id="name" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Drugie imię" />
+                <TextField id="PESELTextField" fx:id="secondName" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Nazwisko" />
+                <TextField id="PESELTextField" fx:id="surname" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label prefHeight="31.9609375" prefWidth="190.0" text="Data urodzenia &#10;YYYY-MM-DD">
+                  <font>
+                    <Font name="System Bold" size="12.0" />
+                  </font>
+                </Label>
+                <TextField id="PESELTextField" fx:id="year" prefHeight="32.0" prefWidth="53.0" />
+                <Label alignment="CENTER" font="$x1" prefHeight="32.0" prefWidth="22.0" text="-" />
+                <TextField id="PESELTextField" fx:id="month" prefHeight="32.0" prefWidth="29.0" />
+                <Label alignment="CENTER" font="$x1" prefHeight="32.0" prefWidth="22.0" text="-" />
+                <TextField id="PESELTextField" fx:id="day" prefHeight="32.0" prefWidth="29.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Imię ojca" />
+                <TextField id="PESELTextField" fx:id="fathersName" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Imię matki" />
+                <TextField id="PESELTextField" fx:id="mothersName" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Adres" />
+                <TextField id="PESELTextField" fx:id="address" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Kod pocztowy" />
+                <TextField id="PESELTextField" fx:id="postCode1" prefHeight="32.0" prefWidth="53.0" />
+                <Label alignment="CENTER" font="$x1" prefHeight="32.0" prefWidth="22.0" text="-" />
+                <TextField id="PESELTextField" fx:id="postCode2" prefHeight="32.0" prefWidth="80.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Miasto" />
+                <TextField id="PESELTextField" fx:id="city" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Telefon kontaktowy" />
+                <TextField id="PESELTextField" fx:id="phoneNumber" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Nazwa klasy" />
+                <TextField id="PESELTextField" fx:id="className" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+          </children>
+        </VBox>
+        <Button layoutX="284.0" layoutY="457.0" mnemonicParsing="false" onAction="#backToStartingWindowHandler" onMouseClicked="#backToStartingWindowHandler" prefHeight="31.9609375" prefWidth="88.0" text="Anuluj">
+          <font>
+            <Font name="System Bold" size="14.0" fx:id="x2" />
+          </font>
+        </Button>
+        <Button font="$x2" layoutX="27.0" layoutY="456.0" mnemonicParsing="false" onMouseClicked="#addStudentToDatabaseHandler" prefHeight="31.9609375" prefWidth="88.0" text="Dodaj" />
+        <Label fx:id="label" alignment="CENTER" layoutX="71.0" layoutY="408.0" prefHeight="24.9609375" prefWidth="253.0" text="" textAlignment="CENTER" textFill="#ff3333">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

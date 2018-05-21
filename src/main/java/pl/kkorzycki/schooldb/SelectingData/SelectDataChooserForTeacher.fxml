@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="538.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.kkorzycki.schooldb.SelectingData.SelectDataChooserForTeacher">
+  <children>
+    <Pane layoutX="1.0" layoutY="-2.0" prefHeight="540.0" prefWidth="400.0">
+      <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="14.0" prefHeight="44.0" prefWidth="345.0" text="Wybierz rodzaj danych do wyświetlnia" textAlignment="CENTER">
+          <font>
+            <Font name="System Bold" size="18.0" />
+          </font>
+        </Label>
+        <VBox layoutX="28.0" layoutY="84.0" prefHeight="369.0" prefWidth="331.0">
+          <children>
+            <HBox prefHeight="29.0" prefWidth="331.0">
+              <children>
+                <Label alignment="CENTER" prefHeight="30.0" prefWidth="254.0" text="Uczniowie" textAlignment="CENTER" wrapText="false">
+                  <font>
+                    <Font name="System Bold" size="14.0" fx:id="x1" />
+                  </font>
+                </Label>
+                <Button mnemonicParsing="false" onMouseClicked="#selectAllStudentsHandler" prefHeight="30.0" prefWidth="80.0" text="Pokaż">
+                  <font>
+                    <Font name="System Bold" size="12.0" fx:id="x2" />
+                  </font>
+                </Button>
+              </children>
+            </HBox>
+            <Separator prefHeight="11.0" prefWidth="331.0" />
+            <HBox prefHeight="29.0" prefWidth="331.0">
+              <children>
+                <Label alignment="CENTER" font="$x1" prefHeight="30.0" prefWidth="254.0" text="Uczniowie + klasy" textAlignment="CENTER" wrapText="false" />
+                <Button font="$x2" mnemonicParsing="false" onMouseClicked="#selectStudentsReducedHandler" prefHeight="30.0" prefWidth="80.0" text="Pokaż" />
+              </children>
+            </HBox>
+            <Separator prefHeight="11.0" prefWidth="331.0" />
+            <HBox prefHeight="29.0" prefWidth="331.0">
+              <children>
+                <Label alignment="CENTER" font="$x1" prefHeight="30.0" prefWidth="254.0" text="Klasa" textAlignment="CENTER" wrapText="false" />
+                <Button font="$x2" mnemonicParsing="false" onMouseClicked="#selectClassHandler" prefHeight="30.0" prefWidth="80.0" text="Pokaż" />
+              </children>
+            </HBox>
+            <Separator prefHeight="11.0" prefWidth="331.0" />
+            <HBox prefHeight="29.0" prefWidth="331.0">
+              <children>
+                <Label alignment="CENTER" font="$x1" prefHeight="30.0" prefWidth="254.0" text="Klasa + przedmioty" textAlignment="CENTER" wrapText="false" />
+                <Button font="$x2" mnemonicParsing="false" onMouseClicked="#selectClassSubjectsHandler" prefHeight="30.0" prefWidth="80.0" text="Pokaż" />
+              </children>
+            </HBox>
+            <Separator prefHeight="11.0" prefWidth="331.0" />
+            <HBox prefHeight="29.0" prefWidth="331.0">
+              <children>
+                <Label alignment="CENTER" font="$x1" prefHeight="30.0" prefWidth="254.0" text="Klasy + wychowawcy" textAlignment="CENTER" wrapText="false" />
+                <Button font="$x2" mnemonicParsing="false" onMouseClicked="#selectClassWithTutorsHandler" prefHeight="30.0" prefWidth="80.0" text="Pokaż" />
+              </children>
+            </HBox>
+            <Separator prefHeight="11.0" prefWidth="331.0" />
+          </children>
+        </VBox>
+        <Button layoutX="249.0" layoutY="464.0" mnemonicParsing="false" onMouseClicked="#backToStartingWindowHandler" prefHeight="29.0" prefWidth="101.0" text="Anuluj">
+          <font>
+            <Font name="System Bold" size="16.0" />
+          </font>
+        </Button>
+        <Separator layoutX="221.0" layoutY="444.0" orientation="VERTICAL" prefHeight="69.0" />
+        <TextField fx:id="textField" layoutX="38.0" layoutY="479.0" prefHeight="29.0" prefWidth="162.0" />
+        <Label alignment="CENTER" font="$x1" layoutX="33.0" layoutY="444.0" prefHeight="30.0" prefWidth="172.0" text="Wprowadź kod" textAlignment="CENTER" wrapText="false" />
+        <Label fx:id="infoLabel" layoutX="59.0" layoutY="50.0" prefHeight="29.0" prefWidth="291.0" text="" textFill="RED" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

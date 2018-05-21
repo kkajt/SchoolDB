@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.kkorzycki.schooldb.LoginWindow">
+  <children>
+    <Pane disable="false" layoutX="2.0" layoutY="0.0" prefHeight="300.0" prefWidth="300.0">
+      <children>
+        <Label alignment="CENTER" layoutX="64.0" layoutY="25.0" prefHeight="90.9609375" prefWidth="173.0" text="System&#10;Zarządzania &#10;Szkołą" textAlignment="CENTER" textOverrun="ELLIPSIS">
+          <font>
+            <Font name="System Bold" size="20.0" />
+          </font>
+        </Label>
+        <TextField id="text" fx:id="textField" layoutX="96.0" layoutY="151.0" prefWidth="155.99990000000253" visible="true" />
+        <PasswordField fx:id="passwordField" layoutX="95.0" layoutY="185.0" prefWidth="156.0" />
+        <Label layoutX="37.0" layoutY="154.0" text="LOGIN" />
+        <Label layoutX="36.0" layoutY="188.0" text="HASŁO" />
+        <Button layoutX="144.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#loginButtonHandler" text="ZALOGUJ SIĘ">
+          <font>
+            <Font size="16.0" />
+          </font>
+        </Button>
+        <Label fx:id="errorLabel" layoutX="44.0" layoutY="122.0" prefHeight="28.28125" prefWidth="213.0" text="" textFill="RED">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

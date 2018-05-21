@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="400.0" prefWidth="403.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.kkorzycki.schooldb.MainWindow">
+  <children>
+    <Pane layoutX="0.0" layoutY="0.0" prefHeight="400.0000999999975" prefWidth="403.0">
+      <children>
+        <VBox layoutX="56.0" layoutY="48.0" prefHeight="200.0" prefWidth="100.0">
+          <children>
+            <Button mnemonicParsing="false" onMouseClicked="#addingHandler" prefHeight="55.0" prefWidth="95.0" text="Dodaj">
+              <font>
+                <Font name="System Bold" size="16.0" fx:id="x1" />
+              </font>
+            </Button>
+            <Separator prefHeight="17.0" prefWidth="100.0" />
+            <Button font="$x1" mnemonicParsing="false" onMouseClicked="#modifyingHandler" prefHeight="55.0" prefWidth="95.0" text="Zmień" />
+            <Separator prefHeight="17.0" prefWidth="100.0" />
+            <Button font="$x1" mnemonicParsing="false" onMouseClicked="#deletingHandler" prefHeight="55.0" prefWidth="95.0" text="Usuń" />
+          </children>
+        </VBox>
+        <Button layoutX="241.0" layoutY="91.0" mnemonicParsing="false" onMouseClicked="#showDataHandler" prefHeight="114.0" prefWidth="122.0" text="Wyświetl">
+          <font>
+            <Font name="System Bold" size="20.0" />
+          </font>
+        </Button>
+        <Separator layoutX="190.0" layoutY="40.0" orientation="VERTICAL" prefHeight="216.0" />
+        <Separator layoutX="14.0" layoutY="278.0" prefWidth="375.0" />
+        <Button layoutX="42.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#makeBackupCopyHandler" prefHeight="55.0" prefWidth="95.0" text="Kopia&#10;zapasowa" textAlignment="CENTER">
+          <font>
+            <Font name="System Bold" size="14.0" fx:id="x2" />
+          </font>
+        </Button>
+        <Button font="$x2" layoutX="268.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#restoreBackupCopyHandler" prefHeight="55.0" prefWidth="95.0" text="Otwórz &#10;kopię" textAlignment="CENTER" />
+        <Button font="$x2" layoutX="151.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#newSchoolYearHandler" prefHeight="55.0" prefWidth="95.0" text="Zakończ &#10;rok" textAlignment="CENTER" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

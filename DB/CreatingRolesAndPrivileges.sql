@@ -1,0 +1,41 @@
+DROP ROLE IF EXISTS administrator;
+CREATE ROLE administrator;
+GRANT ALL PRIVILEGES ON *.* TO administrator WITH GRANT OPTION;
+
+DROP ROLE IF EXISTS dyrektor;
+CREATE ROLE dyrektor;
+GRANT ALL PRIVILEGES ON *.* TO dyrektor WITH GRANT OPTION;
+
+DROP ROLE IF EXISTS nauczyciel;
+CREATE ROLE nauczyciel;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectAllStudents TO nauczyciel;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectStudentsReduced TO nauczyciel;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectClass TO nauczyciel;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectClassSubjects TO nauczyciel;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectClassWithTutors TO nauczyciel;
+GRANT EXECUTE ON PROCEDURE `szkola`.modifyStudent TO nauczyciel;
+GRANT EXECUTE ON PROCEDURE `szkola`.checkPrivileges TO nauczyciel;
+
+DROP ROLE IF EXISTS sekretariat;
+CREATE ROLE sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectAllStudents TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectStudentsReduced TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectClass TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectClassSubjects TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectAllWorkers TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectTeachers TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectWorkersExceptTeachers TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.selectTeacherInfo TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.addStudent TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.addWorker TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.addClass TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.addSubject TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.modifyStudent TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.modifyWorker TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.modifyClass TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.modifySubject TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.deleteStudent TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.deleteWorker TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.deleteClass TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.modifySubject TO sekretariat;
+GRANT EXECUTE ON PROCEDURE `szkola`.checkPrivileges TO sekretariat;

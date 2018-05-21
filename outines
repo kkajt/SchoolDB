@@ -1,0 +1,259 @@
+-- MySQL dump 10.16  Distrib 10.2.12-MariaDB, for osx10.12 (x86_64)
+--
+-- Host: localhost    Database: szkola
+-- ------------------------------------------------------
+-- Server version	10.2.12-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Klasy`
+--
+
+DROP TABLE IF EXISTS `Klasy`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Klasy` (
+  `Kod` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
+  `Nazwa` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
+  `Wychowawca` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`Kod`),
+  KEY `Wychowawca` (`Wychowawca`),
+  CONSTRAINT `klasy_ibfk_1` FOREIGN KEY (`Wychowawca`) REFERENCES `Pracownicy` (`Kod`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Klasy`
+--
+
+LOCK TABLES `Klasy` WRITE;
+/*!40000 ALTER TABLE `Klasy` DISABLE KEYS */;
+INSERT INTO `Klasy` VALUES ('ABCD','3a','P00001'),('GF4S','IA','P00001'),('GR2R','IIA','P00002'),('MUEG','3a','P00001'),('SF32','IIIA','P00003');
+/*!40000 ALTER TABLE `Klasy` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_unicode_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER afterDeleteOnKlasy AFTER DELETE ON klasy FOR EACH ROW
+BEGIN
+	DELETE FROM przedmioty
+    WHERE Nazwa_klasy = OLD.Nazwa;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `Pracownicy`
+--
+
+DROP TABLE IF EXISTS `Pracownicy`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Pracownicy` (
+  `Kod` char(6) COLLATE utf8_unicode_ci NOT NULL,
+  `PESEL` char(11) COLLATE utf8_unicode_ci NOT NULL,
+  `Imię` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Drugie_imię` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Nazwisko` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Data_urodzenia` date NOT NULL,
+  `Adres` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Kod_pocztowy` char(6) COLLATE utf8_unicode_ci NOT NULL,
+  `Miasto` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Numer_konta` char(26) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Email` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Stanowisko` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Telefon_kontaktowy` char(9) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`Kod`),
+  CONSTRAINT `validate_negvalues` CHECK (`PESEL` >= 0),
+  CONSTRAINT `validate_pesel` CHECK (substr(`PESEL`,1,2) = substr(year(`Data_urodzenia`),3,2) and substr(`PESEL`,5,2) = dayofmonth(`Data_urodzenia`) and (substr(`PESEL`,3,2) = month(`Data_urodzenia`) and cast(year(`Data_urodzenia`) as unsigned) <= 1999 or substr(`PESEL`,3,2) = month(`Data_urodzenia`) + 20 and cast(year(`Data_urodzenia`) as unsigned) >= 2000))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Pracownicy`
+--
+
+LOCK TABLES `Pracownicy` WRITE;
+/*!40000 ALTER TABLE `Pracownicy` DISABLE KEYS */;
+INSERT INTO `Pracownicy` VALUES ('P00001','78081908963','Jan','Paweł','Wojtyła','1978-08-19','Piłsudskiego 2/11','55-200','Oława','00000000000000000000000001','jp@op.pl','nauczyciel','666666666'),('P00002','86022608965','Maciej','Paweł','Nowak','1986-02-26','Leśna 2/3','55-200','Oława','00000000000000000000000002','mn@op.pl','nauczyciel','555555555'),('P00003','53093008965','Paweł','Maciej','Krupski','1953-09-30','Wyspiańskiego 2/3','55-200','Oława','00000000000000000000000003','pkmlsr@op.pl','nauczyciel','444444444'),('P21635','54093008965','Paweł','Maciej','Krupski','1954-09-30','Wyspiańskiego 2/3','55-200','Oława','00000000000000000000000003','pkmlsr@op.pl','nauczyciel','444444444');
+/*!40000 ALTER TABLE `Pracownicy` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_unicode_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER beforeDeleteOnPracownicy BEFORE DELETE ON pracownicy FOR EACH ROW
+BEGIN
+	-- Removing record from table 'wynagrodzenia'.
+    DELETE FROM wynagrodzenia 
+    WHERE Kod_pracownika = OLD.Kod;
+    
+    -- Updating table 'przedmioty'.
+    UPDATE przedmioty
+    SET Kod_nauczyciela = NULL
+    WHERE Kod_nauczyciela = OLD.Kod;
+    
+    -- Deleting user from tabler 'użytkownicy'.
+    DELETE FROM użytkownicy
+    WHERE Kod_pracownika = OLD.Kod;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `Przedmioty`
+--
+
+DROP TABLE IF EXISTS `Przedmioty`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Przedmioty` (
+  `Nazwa` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Kod_klasy` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
+  `Kod_nauczyciela` char(6) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Liczba_godzin` int(11) NOT NULL,
+  PRIMARY KEY (`Nazwa`,`Kod_klasy`),
+  KEY `Kod_nauczyciela` (`Kod_nauczyciela`),
+  CONSTRAINT `przedmioty_ibfk_1` FOREIGN KEY (`Kod_nauczyciela`) REFERENCES `Pracownicy` (`Kod`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Przedmioty`
+--
+
+LOCK TABLES `Przedmioty` WRITE;
+/*!40000 ALTER TABLE `Przedmioty` DISABLE KEYS */;
+INSERT INTO `Przedmioty` VALUES ('Analiza analityczna','SF32','P00003',6),('Bazy danych','GF4S','P00001',6),('Przyroda','GF4S','P00002',6);
+/*!40000 ALTER TABLE `Przedmioty` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Uczniowie`
+--
+
+DROP TABLE IF EXISTS `Uczniowie`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Uczniowie` (
+  `Kod` char(6) COLLATE utf8_unicode_ci NOT NULL,
+  `PESEL` char(11) COLLATE utf8_unicode_ci NOT NULL,
+  `Imię` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Drugie_imię` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Nazwisko` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Data_urodzenia` date NOT NULL,
+  `Imię_ojca` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Imię_matki` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Adres` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Kod_pocztowy` char(6) COLLATE utf8_unicode_ci NOT NULL,
+  `Miasto` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Telefon_kontaktowy` char(9) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Kod_klasy` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`Kod`),
+  KEY `Kod_klasy` (`Kod_klasy`),
+  CONSTRAINT `uczniowie_ibfk_1` FOREIGN KEY (`Kod_klasy`) REFERENCES `Klasy` (`Kod`),
+  CONSTRAINT `validate_negvalues` CHECK (`PESEL` >= 0),
+  CONSTRAINT `validate_pesel` CHECK (substr(`PESEL`,1,2) = substr(year(`Data_urodzenia`),3,2) and substr(`PESEL`,5,2) = dayofmonth(`Data_urodzenia`) and (substr(`PESEL`,3,2) = month(`Data_urodzenia`) and cast(year(`Data_urodzenia`) as unsigned) <= 1999 or substr(`PESEL`,3,2) = month(`Data_urodzenia`) + 20 and cast(year(`Data_urodzenia`) as unsigned) >= 2000))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Uczniowie`
+--
+
+LOCK TABLES `Uczniowie` WRITE;
+/*!40000 ALTER TABLE `Uczniowie` DISABLE KEYS */;
+INSERT INTO `Uczniowie` VALUES ('U00001','99010100000','Piotr','Robert','Kaloryfer','1999-01-01','Paweł','Małgorzata','Szkolna 21/37','55-200','Oława','999999999','GF4S'),('U00002','99020200000','Marcin','Maciej','Zawadiaka','1999-02-02','Maciej','Małgorzata','Wittiga 21/37','55-200','Oława','888888888','GR2R'),('U00003','99030300000','Matka','Jolanta','Gogoli','1999-03-03','Paweł','Małgorzata','Szkolna 21/37','55-200','Oława','666666666','SF32'),('U82460','97041622333','Kajetan','Ka','Ko','1997-04-16','Pe','De','Es','22-121','Wuwua','999111333','ABCD');
+/*!40000 ALTER TABLE `Uczniowie` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Użytkownicy`
+--
+
+DROP TABLE IF EXISTS `Użytkownicy`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Użytkownicy` (
+  `LOGIN` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `Kod_pracownika` char(6) COLLATE utf8_unicode_ci NOT NULL,
+  `Uprawnienia` enum('administrator','dyrektor','sekretariat','nauczyciel') COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`LOGIN`),
+  KEY `Kod_pracownika` (`Kod_pracownika`),
+  CONSTRAINT `użytkownicy_ibfk_1` FOREIGN KEY (`Kod_pracownika`) REFERENCES `Pracownicy` (`Kod`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Użytkownicy`
+--
+
+LOCK TABLES `Użytkownicy` WRITE;
+/*!40000 ALTER TABLE `Użytkownicy` DISABLE KEYS */;
+INSERT INTO `Użytkownicy` VALUES ('P00001','P00001','administrator'),('P00002','P00002','dyrektor'),('P00003','P00003','nauczyciel'),('tester0','P00001','dyrektor');
+/*!40000 ALTER TABLE `Użytkownicy` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Wynagrodzenia`
+--
+
+DROP TABLE IF EXISTS `Wynagrodzenia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Wynagrodzenia` (
+  `Kod_pracownika` char(6) COLLATE utf8_unicode_ci NOT NULL,
+  `Numer_konta` char(26) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Podstawa_brutto` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`Kod_pracownika`),
+  CONSTRAINT `wynagrodzenia_ibfk_1` FOREIGN KEY (`Kod_pracownika`) REFERENCES `Pracownicy` (`Kod`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Wynagrodzenia`
+--
+
+LOCK TABLES `Wynagrodzenia` WRITE;
+/*!40000 ALTER TABLE `Wynagrodzenia` DISABLE KEYS */;
+INSERT INTO `Wynagrodzenia` VALUES ('P00001','00000000000000000000000001',2137.00),('P00002','00000000000000000000000002',2137.00),('P00003','00000000000000000000000003',2137.00),('P21635','00000000000000000000000003',5000.00);
+/*!40000 ALTER TABLE `Wynagrodzenia` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-01-11 21:44:02

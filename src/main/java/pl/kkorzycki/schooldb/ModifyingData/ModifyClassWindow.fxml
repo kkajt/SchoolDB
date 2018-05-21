@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="180.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.kkorzycki.schooldb.ModifyingData.ModifyClassWindow">
+  <children>
+    <Pane layoutX="0.0" layoutY="0.0" prefHeight="180.0" prefWidth="400.0">
+      <children>
+        <VBox layoutX="27.0" layoutY="10.0" prefHeight="100.0" prefWidth="346.0">
+          <children>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label prefHeight="31.9609375" prefWidth="190.0" text="Kod klasy">
+                  <font>
+                    <Font name="System Bold" size="16.0" fx:id="x1" />
+                  </font>
+                </Label>
+                <TextField id="PESEL" fx:id="code" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Kolumna" />
+                <TextField id="PESELTextField" fx:id="column" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+            <HBox prefHeight="31.9609375" prefWidth="346.0">
+              <children>
+                <Label font="$x1" prefHeight="31.9609375" prefWidth="190.0" text="Wartość" />
+                <TextField id="PESELTextField" fx:id="value" prefHeight="32.0" prefWidth="156.0" />
+              </children>
+            </HBox>
+          </children>
+        </VBox>
+        <Button layoutX="272.0" layoutY="134.0" mnemonicParsing="false" onAction="#backToStartingWindowHandler" onMouseClicked="#backToStartingWindowHandler" prefHeight="31.9609375" prefWidth="88.0" text="Anuluj">
+          <font>
+            <Font name="System Bold" size="14.0" fx:id="x2" />
+          </font>
+        </Button>
+        <Button font="$x2" layoutX="27.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#modifyClassFromDatabaseHandler" prefHeight="31.9609375" prefWidth="88.0" text="Zmień" />
+        <Label fx:id="label" alignment="CENTER" layoutX="71.0" layoutY="105.0" prefHeight="24.9609375" prefWidth="253.0" text="" textAlignment="CENTER" textFill="#ff3333">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

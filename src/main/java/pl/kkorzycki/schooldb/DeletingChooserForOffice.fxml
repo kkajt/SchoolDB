@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="371.0" prefWidth="379.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.kkorzycki.schooldb.DeletingChooserForOffice">
+  <children>
+    <Pane layoutX="0.0" layoutY="4.0" prefHeight="363.0" prefWidth="379.0">
+      <children>
+        <Label layoutX="37.0" layoutY="14.0" prefHeight="46.0" prefWidth="326.0" text="Wybierz rodzaj danych do usunięcia">
+          <font>
+            <Font name="System Bold" size="16.0" />
+          </font>
+        </Label>
+        <Button layoutX="246.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#backToStartingWindowHandler" prefHeight="31.9609375" prefWidth="88.0" text="Anuluj">
+          <font>
+            <Font name="System Bold" size="14.0" fx:id="x1" />
+          </font>
+        </Button>
+        <VBox layoutX="59.0" layoutY="60.0" prefHeight="200.0" prefWidth="116.0">
+          <children>
+            <Button font="$x1" mnemonicParsing="false" onMouseClicked="#deleteStudentHandler" prefHeight="54.0" prefWidth="116.0" text="Usuń&#10;ucznia" textAlignment="CENTER" />
+            <Separator prefHeight="15.0" prefWidth="100.0" />
+            <Button font="$x1" mnemonicParsing="false" onMouseClicked="#deleteWorkerHandler" prefHeight="54.0" prefWidth="116.0" text="Usuń&#10;pracownika" textAlignment="CENTER" />
+            <Separator prefHeight="15.0" prefWidth="100.0" />
+            <Button font="$x1" mnemonicParsing="false" onMouseClicked="#deleteSubjectHandler" prefHeight="54.0" prefWidth="116.0" text="Usuń&#10;przedmiot" textAlignment="CENTER" />
+          </children>
+        </VBox>
+        <VBox layoutX="216.0" layoutY="137.0" prefHeight="54.0" prefWidth="117.0">
+          <children>
+            <Button font="$x1" mnemonicParsing="false" onMouseClicked="#deleteClassHandler" prefHeight="54.0" prefWidth="116.0" text="Usuń&#10;klasę" textAlignment="CENTER" />
+          </children>
+        </VBox>
+        <Separator layoutX="14.0" layoutY="279.0" prefWidth="349.0" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>
